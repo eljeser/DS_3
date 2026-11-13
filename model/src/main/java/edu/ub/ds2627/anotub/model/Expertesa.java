@@ -1,7 +1,5 @@
 package edu.ub.ds2627.anotub.model;
 
-import java.util.Objects;
-
 public final class Expertesa {
   private final String nom;
 
