@@ -12,6 +12,8 @@ import state.WorldState;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class TasquesDisponiblesStepDefs {
 
     private static final String NO_DISPONIBLE = "No Disponible";

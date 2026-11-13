@@ -6,6 +6,8 @@ import edu.ub.ds2627.anotub.controlador.MessagesCAT;
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 // Dades de prova compartides pels StepDefs; tot es fa a través del Controlador
 public final class DadesDeProva {
   public static final String CONTRASENYA = "Password123";

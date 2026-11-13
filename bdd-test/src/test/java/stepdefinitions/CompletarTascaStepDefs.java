@@ -11,7 +11,7 @@ import state.WorldState;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CompletarTascaStepDefs {
   private static final String DADA_JA_ANOTADA = "D0";
