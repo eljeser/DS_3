@@ -5,6 +5,7 @@ import edu.ub.ds2627.anotub.model.excepcions.*;
 import java.util.List;
 
 public class Assignacio {
+
     private final Tasca tasca;
     private Anotadora anotadora;
     private EstatTasca estat;
