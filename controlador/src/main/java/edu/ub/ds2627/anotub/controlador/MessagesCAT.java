@@ -31,8 +31,10 @@ public enum MessagesCAT {
   EspecificacioJaExistentException("Ja existeix una especificació de tasca amb aquest títol."),
   EspecificacioNoExistentException("No existeix cap especificació de tasca amb aquest títol."),
   TipusDadaIncorrecteException("Aquesta tasca no admet aquest tipus de dada."),
-  DimensionsImatgeNoValidesException("Les dimensions de la imatge no són vàlides.");
-
+  DimensionsImatgeNoValidesException("Les dimensions de la imatge no són vàlides."),
+  LocalitzacioAssignadaCorrectament("L'objecte s'ha localitzat amb èxit."),
+  DimensionsRegioInvalidesException("La localització no és vàlida."),
+  MassesCategoriesNoPermesesException("Una o més categories no són permeses per aquesta tasca.");
   private final String message;
 
   MessagesCAT(String message) {

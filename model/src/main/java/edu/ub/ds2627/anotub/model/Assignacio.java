@@ -61,7 +61,7 @@ public class Assignacio {
         tasca.anotarEtiqueta(titolDada, categoria);
     }
 
-    public void anotarLocalitzacio(Anotadora anotadora, String titolDada, Categoria categoria)
+   public void anotarLocalitzacio(Anotadora anotadora, String titolDada, Categoria categoria)
             throws TascaNoAssignadaException, TascaJaCompletadaException, TipusEtiquetaNoPermesaException {
         comprovarAssignadaA(anotadora);
         tasca.anotarLocalitzacio(titolDada, categoria);
@@ -96,4 +96,12 @@ public class Assignacio {
             throw new TascaNoAssignadaException();
         }
     }
-}
+
+    // US8
+    public void anotarLocalitzacio(Anotadora anotadora, String titolDada, Punt2D origen, Punt2D fi, List<Categoria> categories)
+            throws TascaNoAssignadaException, TascaJaCompletadaException, TipusEtiquetaNoPermesaException, DadaNoExistentException, MassesCategoriesNoPermesesException {
+        comprovarAssignadaA(anotadora);
+        tasca.anotarLocalitzacio(titolDada, origen, fi, categories);
+    }
+
+    } // Final de classe Assignació

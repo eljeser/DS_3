@@ -309,4 +309,33 @@ public class AnotUB {
   public int consultarQuotaEmpresa(String tipusEmpresa) throws TipusEmpresaDesconegutException {
     return calculQuotaEmpresa.quotaAnual(tipusEmpresa);
   }
+
+  // US8
+  public boolean estaRegistradaAmbLesExperteses(String nomUsuari, String expertesa) throws AnotadoraNoExistentException {
+    Anotadora anotadora = anotadores.obtenir(nomUsuari);
+    return anotadores.anotadoraTéExpertesa(anotadora, expertesa);
+  }
+
+  public int obtenirNombreLocalitzacions(String idTasca, String titolDada) throws TascaNoExistentException, DadaNoExistentException {
+    return tasques.obtenir(idTasca).obtenirNombreLocalitzacions(titolDada);
+  }
+
+  // Sobreescritura
+  public void anotarLocalitzacio(String nomUsuari, String idTasca, String titolDada, int xInicial, int yInicial, int xFi, int yFi, List<String> categories)
+      throws AtributFaltantException, AnotadoraNoExistentException, TascaNoExistentException,
+      TascaNoAssignadaException, TascaJaCompletadaException, TipusEtiquetaNoPermesaException, MassesCategoriesNoPermesesException, DadaNoExistentException {
+
+      Camps.exigir(titolDada, "titolDada");
+      Camps.exigirLlista(categories, "categories");
+
+      Anotadora anotadora = anotadores.obtenir(nomUsuari);
+
+      Punt2D origen = new Punt2D(xInicial, yInicial);
+      Punt2D fi = new Punt2D(xFi, yFi);
+
+      List<Categoria> categoriesModel = categories.stream().map(Categoria::new).toList();
+      assignacions.obtenirPerTasca(idTasca).anotarLocalitzacio(anotadora, titolDada, origen, fi, categoriesModel);
+  }
+
+
 }

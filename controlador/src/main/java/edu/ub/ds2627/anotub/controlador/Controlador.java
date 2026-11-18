@@ -6,6 +6,7 @@ import edu.ub.ds2627.anotub.model.TascaMap;
 import edu.ub.ds2627.anotub.model.excepcions.AnotUBException;
 import edu.ub.ds2627.anotub.model.excepcions.AnotadoraNoExistentException;
 import edu.ub.ds2627.anotub.model.excepcions.AtributFaltantException;
+import edu.ub.ds2627.anotub.model.excepcions.MassesCategoriesNoPermesesException;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -295,4 +296,36 @@ public class Controlador {
       return List.of();
     }
   }
+
+  // US8
+    public boolean estaRegistradaAmbLesExperteses(String nomUsuari, String expertesa) {
+    try{
+      return anotUB.estaRegistradaAmbLesExperteses(nomUsuari, expertesa);
+    } catch (AnotUBException e) {
+      return false;
+      }
+    }
+
+    // Sobreescriutra
+  public String anotarLocalitzacio(String nomUsuari, String idTasca, String titolDada, int xInicial, int yInicial, int xFi, int yFi, List<String> categories) {
+    try {
+      anotUB.anotarLocalitzacio(nomUsuari, idTasca, titolDada, xInicial, yInicial, xFi, yFi, categories);
+      return MessagesCAT.LocalitzacioAssignadaCorrectament.getMessage();
+    } catch (MassesCategoriesNoPermesesException e) {
+      return MessagesCAT.MassesCategoriesNoPermesesException.getMessage();
+    } catch (IllegalArgumentException e) {
+      return MessagesCAT.DimensionsRegioInvalidesException.getMessage();
+    } catch (AnotUBException e) {
+      return MessagesCAT.translate(e);
+    }
+  }
+
+  public int obtenirNombreLocalitzacions(String idTasca, String titolDada) {
+    try {
+      return anotUB.obtenirNombreLocalitzacions(idTasca, titolDada);
+    } catch (AnotUBException e) {
+      throw new IllegalArgumentException(MessagesCAT.translate(e), e);
+    }
+  }
+
 }

@@ -38,4 +38,11 @@ public class CarteraAnotadores {
   public void afegirExpertesaAnotadora(String nomUsuari, String expertesa) throws AnotadoraNoExistentException {
     obtenir(nomUsuari).afegirExpertesa(new Expertesa(expertesa));
   }
-}
+
+  // US8
+  public boolean anotadoraTéExpertesa(Anotadora anotadora, String expertesa) {
+    return anotadora.getExperteses().stream()
+        .anyMatch(e -> e.getNom().equals(expertesa));
+  }
+
+  }

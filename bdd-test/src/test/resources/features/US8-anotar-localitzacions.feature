@@ -23,7 +23,7 @@ Feature: US8 - Anotar localitzacions d'objecte en una imatge
 
   Scenario: Una imatge pot tenir diverses localitzacions
     Given "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102, 136 al píxel 325, 347 amb les categories "arbre baobab"
-    When "anna" localitza a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 451,327 al píxel 688,476 amb les categories "elefant"
+    When "anna" localitza a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 451, 327 al píxel 688, 476 amb les categories "elefant"
     Then el sistema mostra un missatge "L'objecte s'ha localitzat amb èxit."
     And la imatge "i1" de la tasca "t-sabana" té 2 localitzacions
     And la dada "i1" de la tasca "t-sabana" no està marcada com a anotada
@@ -42,9 +42,18 @@ Feature: US8 - Anotar localitzacions d'objecte en una imatge
     Then el sistema mostra un missatge "Una o més categories no són permeses per aquesta tasca."
     And la imatge "i1" de la tasca "t-sabana" té 0 localitzacions
 
+
+
+
+
+
+
   Scenario: Cal indicar com a mínim una categoria
     When "anna" localitza a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102, 136 al píxel 325, 347 amb les categories ""
     Then el sistema mostra un missatge "Falta l'atribut 'categories'."
+
+
+
 
   Scenario: Una altra anotadora no pot localitzar objectes en una tasca que no té assignada
     Given l'anotadora "berta" està registrada amb les experteses "Biologia"
@@ -59,6 +68,23 @@ Feature: US8 - Anotar localitzacions d'objecte en una imatge
     Given "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102, 136 al píxel 325, 347 amb les categories "arbre baobab"
     When "anna" marca la dada "i1" de la tasca "t-sabana" com a anotada
     Then el sistema mostra un missatge "La dada s'ha marcat com a anotada. La tasca s'ha completat."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   Scenario: No es poden afegir localitzacions a una tasca completada
     Given "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102, 136 al píxel 325, 347 amb les categories "arbre baobab"

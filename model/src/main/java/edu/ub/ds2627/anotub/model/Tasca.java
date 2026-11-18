@@ -74,7 +74,7 @@ public abstract class Tasca {
         obtenirDada(titolDada).afegirEtiqueta(categoria);
     }
 
-    public void anotarLocalitzacio(String titolDada, Categoria categoria) throws TipusEtiquetaNoPermesaException {
+   public void anotarLocalitzacio(String titolDada, Categoria categoria) throws TipusEtiquetaNoPermesaException {
         throw new TipusEtiquetaNoPermesaException();
     }
 
@@ -99,5 +99,20 @@ public abstract class Tasca {
         return "{idTasca=" + id +
                 ", descripcioTasca=" + especificacio.getTitol() +
                 ", expertesaNecessaria=" + especificacio.getExpertesesRequerides().get(0).toString() + "}";
+    }
+
+    // Mètode sobreescrit US8
+    public void anotarLocalitzacio(String titolDada, Punt2D origen, Punt2D fi, List<Categoria> categories) throws TipusEtiquetaNoPermesaException, MassesCategoriesNoPermesesException, DadaNoExistentException {
+        throw new TipusEtiquetaNoPermesaException();
+    }
+
+    public int obtenirNombreLocalitzacions(String titolDada) throws DadaNoExistentException {
+        DadaCompleta dada = obtenirDada(titolDada);
+
+        if (dada instanceof Imatge imatge) {
+            return imatge.getNombreRegions();
+        }
+
+        return 0;
     }
 }
