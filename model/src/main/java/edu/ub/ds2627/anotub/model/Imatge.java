@@ -49,7 +49,7 @@ public class Imatge extends DadaCompleta {
         return regions.size();
     }
 
-    // Afegir una regió a la imtage
+    // Afegir una regió a la imatge
     public Regio afegirRegio(Punt2D origen, Punt2D fi) {
         // Comprovem que la regió estigui dins de les dimensions de la imatge
         if (origen.getX() < 0 || origen.getY() < 0 || fi.getX() < 0 || fi.getY() < 0 ||
@@ -57,7 +57,7 @@ public class Imatge extends DadaCompleta {
                 || origen.getX() > fi.getX() || origen.getY() > fi.getY()) {
             throw new IllegalArgumentException();
         }
-        // Si es correcte, afegim la regió a la imatge
+        // Si és correcte, afegim la regió a la imatge
         int id = regions.size() + 1;
         Regio regio = new Regio(id, origen, fi);
         regions.add(regio);
