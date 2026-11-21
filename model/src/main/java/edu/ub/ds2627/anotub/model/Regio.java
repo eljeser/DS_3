@@ -23,4 +23,12 @@ public class Regio extends Dada {
     public Punt2D getFi() {
         return fi;
     }
+
+    public double getHeight() {
+        return fi.getX() - origen.getX() + 1;
+    }
+
+    public double getWidth() {
+        return fi.getY() - origen.getY() + 1;
+    }
 }

@@ -57,6 +57,7 @@ public class Imatge extends DadaCompleta {
                 || origen.getX() > fi.getX() || origen.getY() > fi.getY()) {
             throw new IllegalArgumentException();
         }
+
         // Si és correcte, afegim la regió a la imatge
         int id = regions.size() + 1;
         Regio regio = new Regio(id, origen, fi);

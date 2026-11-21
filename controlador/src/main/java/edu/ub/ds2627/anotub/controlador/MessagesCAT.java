@@ -34,7 +34,8 @@ public enum MessagesCAT {
   DimensionsImatgeNoValidesException("Les dimensions de la imatge no són vàlides."),
   LocalitzacioAssignadaCorrectament("L'objecte s'ha localitzat amb èxit."),
   DimensionsRegioInvalidesException("La localització no és vàlida."),
-  MassesCategoriesNoPermesesException("Una o més categories no són permeses per aquesta tasca.");
+  MassesCategoriesNoPermesesException("Una o més categories no són permeses per aquesta tasca."),
+  FormatDesconegutException("El format demanat no existeix.");
   private final String message;
 
   MessagesCAT(String message) {

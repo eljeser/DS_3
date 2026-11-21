@@ -19,8 +19,8 @@ Feature: US34 - Lliurar una tasca completada
       | imatges            | i1:800x520                  |
     And l'anotadora "anna" està registrada amb les experteses "Biologia"
     And "anna" s'ha assignat la tasca "t-sabana"
-    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102,136 al píxel 325,347 amb les categories "arbre baobab"
-    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 451,327 al píxel 688,476 amb les categories "elefant"
+    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102, 136 al píxel 325, 347 amb les categories "arbre baobab"
+    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 451, 327 al píxel 688, 476 amb les categories "elefant"
 
   Scenario: L'empresa rep el lliurament en YOLO
     Given "anna" ha marcat la dada "i1" de la tasca "t-sabana" com a anotada

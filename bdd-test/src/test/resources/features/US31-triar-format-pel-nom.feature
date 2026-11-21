@@ -15,8 +15,8 @@ Feature: US31 - Triar el format pel nom
       | imatges            | i1:800x520;i2:640x480       |
     And l'anotadora "anna" està registrada amb les experteses "Biologia"
     And "anna" s'ha assignat la tasca "t-sabana"
-    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102,136 al píxel 325,347 amb les categories "arbre baobab"
-    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 451,327 al píxel 688,476 amb les categories "elefant"
+    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102, 136 al píxel 325, 347 amb les categories "arbre baobab"
+    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 451, 327 al píxel 688, 476 amb les categories "elefant"
 
   Scenario: El nom del format no distingeix majúscules de minúscules
     When l'empresa exporta la imatge "i1" de la tasca "t-sabana" en format "yolo"

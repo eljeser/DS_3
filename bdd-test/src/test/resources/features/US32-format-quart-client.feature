@@ -15,8 +15,8 @@ Feature: US32 - Afegir el format del quart client
       | imatges            | i1:800x520;i2:640x480       |
     And l'anotadora "anna" està registrada amb les experteses "Biologia"
     And "anna" s'ha assignat la tasca "t-sabana"
-    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102,136 al píxel 325,347 amb les categories "arbre baobab"
-    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 451,327 al píxel 688,476 amb les categories "elefant"
+    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102, 136 al píxel 325, 347 amb les categories "arbre baobab"
+    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 451, 327 al píxel 688, 476 amb les categories "elefant"
 
   Scenario: Exportar en el format del quart client (TF)
     When l'empresa exporta la imatge "i1" de la tasca "t-sabana" en format "TF"

@@ -3,9 +3,11 @@ package edu.ub.ds2627.anotub.model;
 public class FormatVOC implements FormatCaixa{
     private final String nom;
     private final Regio caixa;
+    private final Imatge imatge;
 
-    public FormatVOC(String nom, Regio caixa) {
+    public FormatVOC(String nom, Imatge imatge, Regio caixa) {
         this.nom = nom;
+        this.imatge = imatge;
         this.caixa = caixa;
     }
 
@@ -21,6 +23,15 @@ public class FormatVOC implements FormatCaixa{
 
     @Override
     public double[] convertir(Regio caixa, int ampladaImatge, int alcadaImatge) {
-        return new double[0];
+        // VOC retorna les coordenades com: [x1 + 1, y1 + 1, x2 + 1, y2 + 1]
+
+        double[] coordenades = new double[4];
+
+        coordenades[0] = caixa.getOrigen().getX() + 1;
+        coordenades[1] = caixa.getOrigen().getY() + 1;
+        coordenades[2] = caixa.getFi().getX() + 1;
+        coordenades[3] = caixa.getFi().getY() + 1;
+
+        return coordenades;
     }
 }

@@ -17,8 +17,8 @@ Feature: US30 - Exportar les caixes d'una imatge
       | imatges            | i1:800x520;i2:640x480       |
     And l'anotadora "anna" està registrada amb les experteses "Biologia"
     And "anna" s'ha assignat la tasca "t-sabana"
-    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102,136 al píxel 325,347 amb les categories "arbre baobab"
-    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 451,327 al píxel 688,476 amb les categories "elefant"
+    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102, 136 al píxel 325, 347 amb les categories "arbre baobab"
+    And "anna" ha localitzat a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 451, 327 al píxel 688, 476 amb les categories "elefant"
 
   Scenario: Exportar en YOLO
     When l'empresa exporta la imatge "i1" de la tasca "t-sabana" en format "YOLO"
@@ -45,7 +45,7 @@ Feature: US30 - Exportar les caixes d'una imatge
       """
 
   Scenario: Una localització amb dues etiquetes genera dues línies
-    Given "anna" ha localitzat a la imatge "i2" de la tasca "t-sabana" la caixa del píxel 10,20 al píxel 49,59 amb les categories "elefant;arbre baobab"
+    Given "anna" ha localitzat a la imatge "i2" de la tasca "t-sabana" la caixa del píxel 10, 20 al píxel 49, 59 amb les categories "elefant;arbre baobab"
     When l'empresa exporta la imatge "i2" de la tasca "t-sabana" en format "COCO"
     Then el resultat és:
       """
