@@ -1,15 +1,15 @@
 package edu.ub.ds2627.anotub.controlador;
 
-import edu.ub.ds2627.anotub.model.AnotUB;
-import edu.ub.ds2627.anotub.model.TDD_TascaMapping;
-import edu.ub.ds2627.anotub.model.TascaMap;
+import edu.ub.ds2627.anotub.model.*;
 import edu.ub.ds2627.anotub.model.excepcions.AnotUBException;
 import edu.ub.ds2627.anotub.model.excepcions.AnotadoraNoExistentException;
 import edu.ub.ds2627.anotub.model.excepcions.AtributFaltantException;
 import edu.ub.ds2627.anotub.model.excepcions.MassesCategoriesNoPermesesException;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class Controlador {
@@ -336,10 +336,43 @@ public class Controlador {
   // US30 Mètodos:
   public String exportarImatge(String idImg, String idTasca, String format){
     try{
-      return anotUB.exportarImatge(idImg, idTasca, format);
+      List<LocalitzacioExportada> localitzacions = anotUB.exportarImatge(idImg, idTasca, format);
+      int decimals = anotUB.decimalsFormat(format);
+
+      // Transformació a text:
+      StringBuilder resultat = new StringBuilder();
+
+      for (LocalitzacioExportada loc : localitzacions) {
+
+        String coordenades = formatarCoordenades(loc.getCoordenades(), decimals);
+
+        for (String cat : loc.getCategories()) {
+          if (!resultat.isEmpty()) {
+            resultat.append("\n");
+          }
+          resultat.append(cat).append(" ").append(coordenades);
+        }
+      }
+
+      return resultat.toString();
+
     } catch (AnotUBException e){
       return MessagesCAT.translate(e);
     }
   }
 
+  private String formatarCoordenades(double[] coordenades, int decimals) {
+    StringBuilder text = new StringBuilder("[");
+    String format = "%." + decimals + "f";
+
+    for (int i = 0; i < coordenades.length; i++) {
+      if (i > 0) {
+        text.append(", ");
+      }
+      text.append(String.format(Locale.ROOT, format, coordenades[i]));
+    }
+    text.append("]");
+
+    return text.toString();
+  }
 }

@@ -2,21 +2,26 @@ package edu.ub.ds2627.anotub.model;
 
 import edu.ub.ds2627.anotub.model.excepcions.FormatDesconegutException;
 
-import java.lang.reflect.Constructor;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CercadorFormats {
 
-    public FormatCaixa createFormatCaixa(String format) throws FormatDesconegutException {
-        try {
-            String paqueteActual = this.getClass().getPackage().getName();
-            Class<?> formatCaixaClass = Class.forName(paqueteActual + ".FormatCaixa" + format.toUpperCase());
+    private final Map<String, FormatCaixa> formats = new HashMap<>();
 
-            Constructor<?> constructor = formatCaixaClass.getConstructor();
+    public void registrar(FormatCaixa format) {
+        formats.put(normalitzar(format.nom()), format);
+    }
 
-            return (FormatCaixa) constructor.newInstance();
-
-        } catch (Exception e) {
+    public FormatCaixa obtenir(String nom) throws FormatDesconegutException {
+        FormatCaixa format = (nom == null) ? null : formats.get(normalitzar(nom));
+        if (format == null) {
             throw new FormatDesconegutException();
         }
+        return format;
+    }
+
+    private static String normalitzar(String nom) {
+        return nom.trim().toUpperCase();
     }
 }

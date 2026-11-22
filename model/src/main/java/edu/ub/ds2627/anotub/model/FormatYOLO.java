@@ -30,7 +30,7 @@ public class FormatYOLO implements FormatCaixa{
 
         coordenades[0] = cx;
         coordenades[1] = cy;
-        coordenades[2] = w / alcadaImatge;
+        coordenades[2] = w / ampladaImatge;
         coordenades[3] = h / alcadaImatge;
 
         return coordenades;

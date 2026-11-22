@@ -3,6 +3,7 @@ package edu.ub.ds2627.anotub.model;
 import edu.ub.ds2627.anotub.model.excepcions.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AnotUB {
@@ -15,6 +16,7 @@ public class AnotUB {
   private final CatalegTasques tasques;
   private final CatalegAssignacions assignacions;
   private final CalculQuotaEmpresa calculQuotaEmpresa;
+  private final CercadorFormats formats;
 
   public AnotUB() {
     this(MARGE_BENEFICI_PER_DEFECTE);
@@ -28,6 +30,10 @@ public class AnotUB {
     this.tasques = new CatalegTasques();
     this.assignacions = new CatalegAssignacions();
     this.calculQuotaEmpresa = new CalculQuotaEmpresa();
+    this.formats = new CercadorFormats();
+    formats.registrar(new FormatCOCO());
+    formats.registrar(new FormatYOLO());
+    formats.registrar(new FormatVOC());
   }
 
   public double getMargeBenefici() {
@@ -338,16 +344,19 @@ public class AnotUB {
   }
 
   // US30 Mètodes:
-  public String exportarImatge(String idImg, String idTasca, String format)
+  public List<LocalitzacioExportada> exportarImatge(String idImg, String idTasca, String format)
           throws TascaNoExistentException, DadaNoExistentException, FormatDesconegutException, TascaTipusNoImatgeException {
     Tasca tasca = tasques.obtenir(idTasca);
-    FormatCaixa formatCaixa = new CercadorFormats().createFormatCaixa(format);
-    List<LocalitzacioExportada> localitzacions = tasca.exportarImatge(idImg, formatCaixa);
+    List<String> resultat = new ArrayList<>();
 
+    FormatCaixa formatCaixa = formats.obtenir(format);
 
+    return tasca.exportarImatge(idImg, formatCaixa);
+  }
 
-
-    return "";
+  // Mètode pels decimals
+  public int decimalsFormat(String nomFormat) throws FormatDesconegutException {
+    return formats.obtenir(nomFormat).decimals();
   }
 
 }
