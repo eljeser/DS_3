@@ -1,6 +1,7 @@
 package edu.ub.ds2627.anotub.model;
 
 import edu.ub.ds2627.anotub.model.excepcions.DimensionsImatgeNoValidesException;
+import edu.ub.ds2627.anotub.model.excepcions.RegioNoValidaException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,12 +51,12 @@ public class Imatge extends DadaCompleta {
     }
 
     // Afegir una regió a la imatge
-    public Regio afegirRegio(Punt2D origen, Punt2D fi) {
+    public Regio afegirRegio(Punt2D origen, Punt2D fi) throws RegioNoValidaException {
         // Comprovem que la regió estigui dins de les dimensions de la imatge
         if (origen.getX() < 0 || origen.getY() < 0 || fi.getX() < 0 || fi.getY() < 0 ||
                 origen.getX() >= amplada || origen.getY() >= alcada|| fi.getX() >= amplada || fi.getY() >= alcada
                 || origen.getX() > fi.getX() || origen.getY() > fi.getY()) {
-            throw new IllegalArgumentException();
+            throw new RegioNoValidaException();
         }
 
         // Si és correcte, afegim la regió a la imatge
@@ -63,6 +64,24 @@ public class Imatge extends DadaCompleta {
         Regio regio = new Regio(id, origen, fi);
         regions.add(regio);
         return regio;
+    }
+
+    // Exportar una imatge:
+    public List<LocalitzacioExportada> exportar(FormatCaixa format){
+
+        List<LocalitzacioExportada> localitzacionsExportades = new ArrayList<>();
+
+        // Recorrem totes les regions de la imatge i les convertim a LocalitzacioExportada
+        for (Regio regio : regions) {
+
+            List<String> categories = regio.getCategories().stream().map(Categoria::getNom).toList();
+            double[] coordenades = format.convertir(regio.getCaixa(), getAmplada(), getAlcada());
+
+            LocalitzacioExportada localitzacioExportada = new LocalitzacioExportada(regio.getId(), categories, coordenades);
+            localitzacionsExportades.add(localitzacioExportada);
+        }
+
+        return localitzacionsExportades;
     }
 
 }

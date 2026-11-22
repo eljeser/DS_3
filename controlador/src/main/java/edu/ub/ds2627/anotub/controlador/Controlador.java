@@ -249,6 +249,9 @@ public class Controlador {
   public String marcarDadaAnotada(String nomUsuari, String idTasca, String titolDada) {
     try {
       anotUB.marcarDadaAnotada(nomUsuari, idTasca, titolDada);
+      if (estaTascaCompletada(idTasca)) {
+        return MessagesCAT.DadaAnotadaTascaCompletada.getMessage();
+      }
       return MessagesCAT.DadaAnotadaCorrectament.getMessage();
     } catch (AnotUBException e) {
       return MessagesCAT.translate(e);
@@ -313,6 +316,8 @@ public class Controlador {
       return MessagesCAT.LocalitzacioAssignadaCorrectament.getMessage();
     } catch (MassesCategoriesNoPermesesException e) {
       return MessagesCAT.MassesCategoriesNoPermesesException.getMessage();
+    } catch (AtributFaltantException e) {
+        return MessagesCAT.faltaAtribut(e);
     } catch (IllegalArgumentException e) {
       return MessagesCAT.DimensionsRegioInvalidesException.getMessage();
     } catch (AnotUBException e) {
@@ -325,6 +330,15 @@ public class Controlador {
       return anotUB.obtenirNombreLocalitzacions(idTasca, titolDada);
     } catch (AnotUBException e) {
       throw new IllegalArgumentException(MessagesCAT.translate(e), e);
+    }
+  }
+
+  // US30 Mètodos:
+  public String exportarImatge(String idImg, String idTasca, String format){
+    try{
+      return anotUB.exportarImatge(idImg, idTasca, format);
+    } catch (AnotUBException e){
+      return MessagesCAT.translate(e);
     }
   }
 

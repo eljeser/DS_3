@@ -322,8 +322,8 @@ public class AnotUB {
 
   // Sobreescritura
   public void anotarLocalitzacio(String nomUsuari, String idTasca, String titolDada, int xInicial, int yInicial, int xFi, int yFi, List<String> categories)
-      throws AtributFaltantException, AnotadoraNoExistentException, TascaNoExistentException,
-      TascaNoAssignadaException, TascaJaCompletadaException, TipusEtiquetaNoPermesaException, MassesCategoriesNoPermesesException, DadaNoExistentException {
+          throws AtributFaltantException, AnotadoraNoExistentException, TascaNoExistentException,
+          TascaNoAssignadaException, TascaJaCompletadaException, TipusEtiquetaNoPermesaException, MassesCategoriesNoPermesesException, DadaNoExistentException, RegioNoValidaException {
 
       Camps.exigir(titolDada, "titolDada");
       Camps.exigirLlista(categories, "categories");
@@ -337,5 +337,17 @@ public class AnotUB {
       assignacions.obtenirPerTasca(idTasca).anotarLocalitzacio(anotadora, titolDada, origen, fi, categoriesModel);
   }
 
+  // US30 Mètodes:
+  public String exportarImatge(String idImg, String idTasca, String format)
+          throws TascaNoExistentException, DadaNoExistentException, FormatDesconegutException, TascaTipusNoImatgeException {
+    Tasca tasca = tasques.obtenir(idTasca);
+    FormatCaixa formatCaixa = new CercadorFormats().createFormatCaixa(format);
+    List<LocalitzacioExportada> localitzacions = tasca.exportarImatge(idImg, formatCaixa);
+
+
+
+
+    return "";
+  }
 
 }

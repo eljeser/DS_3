@@ -32,10 +32,13 @@ public enum MessagesCAT {
   EspecificacioNoExistentException("No existeix cap especificació de tasca amb aquest títol."),
   TipusDadaIncorrecteException("Aquesta tasca no admet aquest tipus de dada."),
   DimensionsImatgeNoValidesException("Les dimensions de la imatge no són vàlides."),
+  DadaAnotadaTascaCompletada("La dada s'ha marcat com a anotada. La tasca s'ha completat."),
   LocalitzacioAssignadaCorrectament("L'objecte s'ha localitzat amb èxit."),
   DimensionsRegioInvalidesException("La localització no és vàlida."),
   MassesCategoriesNoPermesesException("Una o més categories no són permeses per aquesta tasca."),
-  FormatDesconegutException("El format demanat no existeix.");
+  FormatDesconegutException("El format demanat no existeix."),
+  RegioNoValidaException("La localització no és vàlida."),
+  TascaTipusNoImatgeException("Aquesta tasca no té imatges.");
   private final String message;
 
   MessagesCAT(String message) {
@@ -54,6 +57,10 @@ public enum MessagesCAT {
     return "No s'ha pogut completar l'operació perquè hi faltava l'atribut '" + e.getAtribut() + "'.";
   }
 
+  public static String faltaAtribut(AtributFaltantException e) {
+    return "Falta l'atribut '" + e.getAtribut() + "'.";
+  }
+
   public static String quotaAnual(int quota) {
     return "La quota anual és de " + quota + " euros.";
   }
@@ -69,6 +76,7 @@ public enum MessagesCAT {
     if (e instanceof TipusEmpresaDesconegutException tipusDesconegut) {
       return tipusEmpresaDesconegut(tipusDesconegut);
     }
+
     try {
       return valueOf(e.getClass().getSimpleName()).getMessage();
     } catch (IllegalArgumentException ignored) {

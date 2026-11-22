@@ -1,10 +1,6 @@
 package edu.ub.ds2627.anotub.model;
 
-import edu.ub.ds2627.anotub.model.excepcions.CategoriaNoPermesaException;
-import edu.ub.ds2627.anotub.model.excepcions.DadaNoExistentException;
-import edu.ub.ds2627.anotub.model.excepcions.DimensionsImatgeNoValidesException;
-import edu.ub.ds2627.anotub.model.excepcions.TipusEtiquetaNoPermesaException;
-import edu.ub.ds2627.anotub.model.excepcions.MassesCategoriesNoPermesesException;
+import edu.ub.ds2627.anotub.model.excepcions.*;
 
 import java.util.List;
 
@@ -22,7 +18,9 @@ public class TascaImatges extends Tasca {
     }
 
     // US8
-    public void afegirLocalitzacio(String titol, Punt2D origen, Punt2D fi, List<Categoria> categories) throws TipusEtiquetaNoPermesaException, MassesCategoriesNoPermesesException, DadaNoExistentException {
+    public void afegirLocalitzacio(String titol, Punt2D origen, Punt2D fi, List<Categoria> categories)
+            throws TipusEtiquetaNoPermesaException, MassesCategoriesNoPermesesException, DadaNoExistentException, RegioNoValidaException {
+
         DadaCompleta dada = obtenirDada(titol);
 
         if (!(dada instanceof Imatge imatge)) {
@@ -43,7 +41,7 @@ public class TascaImatges extends Tasca {
         }
     }
 
-    public void anotarLocalitzacio(String titolDada, Punt2D origen, Punt2D fi, List<Categoria> categories) throws TipusEtiquetaNoPermesaException, MassesCategoriesNoPermesesException, DadaNoExistentException {
+    public void anotarLocalitzacio(String titolDada, Punt2D origen, Punt2D fi, List<Categoria> categories) throws TipusEtiquetaNoPermesaException, MassesCategoriesNoPermesesException, DadaNoExistentException, RegioNoValidaException {
         afegirLocalitzacio(titolDada, origen, fi, categories);
     }
 

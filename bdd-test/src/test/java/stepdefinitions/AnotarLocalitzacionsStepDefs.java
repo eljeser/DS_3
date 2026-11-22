@@ -61,15 +61,18 @@ public class AnotarLocalitzacionsStepDefs {
         // Registrem la tasca
         state.getControlador().registrarTascaImatges(tasca, empresa, titol, dataLimit);
 
-        // Afegim una imatge a la tasca
-        String[] infoImatge = dades.get("imatges").split(":");
-        String titolImatge = infoImatge[0];
-        String[] dimensions = infoImatge[1].split("x");
+        // Afegim cada imatge a la tasca (format "titol:ampladaxalcada")
+        for (String imatge : imatges) {
+            String[] infoImatge = imatge.split(":");
+            String titolImatge = infoImatge[0].trim();
+            String[] dimensions = infoImatge[1].split("x");
 
-        int amplada = Integer.parseInt(dimensions[0]);
-        int alcada = Integer.parseInt(dimensions[1].trim());
+            int amplada = Integer.parseInt(dimensions[0].trim());
+            int alcada = Integer.parseInt(dimensions[1].trim());
 
-        state.getControlador().afegirImatgeTasca(tasca, titolImatge, amplada, alcada);
+            String resultat = state.getControlador().afegirImatgeTasca(tasca, titolImatge, amplada, alcada);
+            assertEquals(MessagesCAT.DadaAfegidaCorrectament.getMessage(), resultat);
+        }
     }
 
     // Mètode auxiliar per separar els elements d'una mateixa fila

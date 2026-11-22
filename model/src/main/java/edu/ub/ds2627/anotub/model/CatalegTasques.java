@@ -38,4 +38,6 @@ public class CatalegTasques {
   public void eliminarTotesLesTasques() {
     tasques.clear();
   }
+
+
 }

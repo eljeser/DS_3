@@ -102,7 +102,7 @@ public abstract class Tasca {
     }
 
     // Mètode sobreescrit US8
-    public void anotarLocalitzacio(String titolDada, Punt2D origen, Punt2D fi, List<Categoria> categories) throws TipusEtiquetaNoPermesaException, MassesCategoriesNoPermesesException, DadaNoExistentException {
+    public void anotarLocalitzacio(String titolDada, Punt2D origen, Punt2D fi, List<Categoria> categories) throws TipusEtiquetaNoPermesaException, MassesCategoriesNoPermesesException, DadaNoExistentException, RegioNoValidaException {
         throw new TipusEtiquetaNoPermesaException();
     }
 
@@ -112,7 +112,17 @@ public abstract class Tasca {
         if (dada instanceof Imatge imatge) {
             return imatge.getNombreRegions();
         }
-
         return 0;
+    }
+
+    public List<LocalitzacioExportada> exportarImatge(String titolImg, FormatCaixa format)
+            throws TascaTipusNoImatgeException, DadaNoExistentException, FormatDesconegutException {
+        DadaCompleta dada = obtenirDada(titolImg);
+
+        if (!(dada instanceof Imatge imatge)) {
+            throw new TascaTipusNoImatgeException();
+        }
+
+        return imatge.exportar(format);
     }
 }

@@ -2,7 +2,7 @@ package edu.ub.ds2627.anotub.model;
 
 import java.util.List;
 
-public class LocalitzacioExportada {
+public final class LocalitzacioExportada {
     private final int idLocalitzacio;
     private final List<String> categories;
     private final double[] coordenades;

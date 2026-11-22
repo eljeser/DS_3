@@ -99,7 +99,7 @@ public class Assignacio {
 
     // US8
     public void anotarLocalitzacio(Anotadora anotadora, String titolDada, Punt2D origen, Punt2D fi, List<Categoria> categories)
-            throws TascaNoAssignadaException, TascaJaCompletadaException, TipusEtiquetaNoPermesaException, DadaNoExistentException, MassesCategoriesNoPermesesException {
+            throws TascaNoAssignadaException, TascaJaCompletadaException, TipusEtiquetaNoPermesaException, DadaNoExistentException, MassesCategoriesNoPermesesException, RegioNoValidaException {
         comprovarAssignadaA(anotadora);
         tasca.anotarLocalitzacio(titolDada, origen, fi, categories);
     }

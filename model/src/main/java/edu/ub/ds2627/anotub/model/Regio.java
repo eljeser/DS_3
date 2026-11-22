@@ -1,34 +1,35 @@
 package edu.ub.ds2627.anotub.model;
 
 
-public class Regio extends Dada {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Regio {
     private final int id;
-    private final Punt2D origen;
-    private final Punt2D fi;
+    private final CaixaEmbolcallant caixa;
+    private List<Categoria> categories;
+
 
     public Regio(int id, Punt2D origen, Punt2D fi) {
         this.id = id;
-        this.origen = origen;
-        this.fi = fi;
+        this.caixa = new CaixaEmbolcallant(origen, fi);
+        categories = new ArrayList<>();
     }
 
     public int getId() {
         return id;
     }
 
-    public Punt2D getOrigen() {
-        return origen;
+    public CaixaEmbolcallant getCaixa() {
+        return caixa;
     }
 
-    public Punt2D getFi() {
-        return fi;
+    public void afegirEtiqueta(Categoria categoria) {
+        categories.add(categoria);
     }
 
-    public double getHeight() {
-        return fi.getX() - origen.getX() + 1;
+    public List<Categoria> getCategories() {
+        return categories;
     }
 
-    public double getWidth() {
-        return fi.getY() - origen.getY() + 1;
-    }
 }

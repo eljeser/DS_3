@@ -42,9 +42,6 @@ Feature: US8 - Anotar localitzacions d'objecte en una imatge
     Then el sistema mostra un missatge "Una o més categories no són permeses per aquesta tasca."
     And la imatge "i1" de la tasca "t-sabana" té 0 localitzacions
 
-
-
-
   Scenario: Cal indicar com a mínim una categoria
     When "anna" localitza a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102, 136 al píxel 325, 347 amb les categories ""
     Then el sistema mostra un missatge "Falta l'atribut 'categories'."
@@ -53,10 +50,6 @@ Feature: US8 - Anotar localitzacions d'objecte en una imatge
     Given l'anotadora "berta" està registrada amb les experteses "Biologia"
     When "berta" localitza a la imatge "i1" de la tasca "t-sabana" la caixa del píxel 102, 136 al píxel 325, 347 amb les categories "arbre baobab"
     Then el sistema mostra un missatge "La tasca no està assignada a aquesta anotadora."
-
-
-
-
 
   Scenario: No es pot localitzar en una imatge inexistent
     When "anna" localitza a la imatge "i9" de la tasca "t-sabana" la caixa del píxel 102, 136 al píxel 325, 347 amb les categories "arbre baobab"
