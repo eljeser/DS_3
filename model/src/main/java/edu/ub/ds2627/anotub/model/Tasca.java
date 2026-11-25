@@ -1,6 +1,7 @@
 package edu.ub.ds2627.anotub.model;
 
 import edu.ub.ds2627.anotub.model.excepcions.*;
+import edu.ub.ds2627.anotub.model.mapping.TascaMap;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

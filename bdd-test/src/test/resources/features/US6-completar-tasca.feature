@@ -7,7 +7,7 @@ Feature: US6 - Completar una tasca assignada
     Given l'anotador "pablo" "cano" té una tasca "T1" assignada
     And només li queda dada "D1" per completar
     When l'anotador "pablo" marca aquesta dada "D1" com anotada
-    Then el sistema marca la dada "D1" com anotada
+    Then el sistema marca la dada "D1" com anotada i completada
     And el sistema marca la tasca "T1" com a completada
 
   Scenario: L'anotador té una tasca assignada, anota una dada com anotada però no és l'ultima

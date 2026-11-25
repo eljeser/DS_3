@@ -151,7 +151,10 @@ public class AnotarLocalitzacionsStepDefs {
     @And("{string} ha marcat la dada {string} de la tasca {string} com a anotada")
     public void haMarcatLaDadaDeLaTascaComAAnotada(String anotadora, String titol, String tasca) {
         String resultat = state.getControlador().marcarDadaAnotada(anotadora, tasca, titol);
-        assertEquals(MessagesCAT.DadaAnotadaCorrectament.getMessage(), resultat);
+        if(state.getControlador().estaTascaCompletada(tasca))
+            assertEquals(MessagesCAT.DadaAnotadaTascaCompletada.getMessage(), resultat);
+        else
+            assertEquals(MessagesCAT.DadaAnotadaCorrectament.getMessage(), resultat);
     }
 
 

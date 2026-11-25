@@ -5,9 +5,9 @@ import edu.ub.ds2627.anotub.model.excepcions.AnotUBException;
 import edu.ub.ds2627.anotub.model.excepcions.AnotadoraNoExistentException;
 import edu.ub.ds2627.anotub.model.excepcions.AtributFaltantException;
 import edu.ub.ds2627.anotub.model.excepcions.MassesCategoriesNoPermesesException;
+import edu.ub.ds2627.anotub.model.mapping.TascaMap;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;

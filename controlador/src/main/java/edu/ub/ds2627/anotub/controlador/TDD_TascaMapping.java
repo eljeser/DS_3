@@ -1,5 +1,7 @@
-package edu.ub.ds2627.anotub.model;
+package edu.ub.ds2627.anotub.controlador;
 
+
+import edu.ub.ds2627.anotub.model.mapping.TascaMap;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

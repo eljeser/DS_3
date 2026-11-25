@@ -1,6 +1,7 @@
 package edu.ub.ds2627.anotub.model;
 
 import edu.ub.ds2627.anotub.model.excepcions.*;
+import edu.ub.ds2627.anotub.model.mapping.TascaMap;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -352,11 +353,8 @@ public class AnotUB {
   public List<LocalitzacioExportada> exportarImatge(String idImg, String idTasca, String format)
           throws TascaNoExistentException, DadaNoExistentException, FormatDesconegutException, TascaTipusNoImatgeException {
     Tasca tasca = tasques.obtenir(idTasca);
-    List<String> resultat = new ArrayList<>();
 
-    //FormatCaixa formatCaixa = formats.obtenir(format);
-
-    // Modificació per a que si el format és null o buit, es triï el format per defecte (COCO)
+    // Modificació perquè si el format és null o buit, es triï el format per defecte (COCO)
     FormatCaixa formatCaixa = formats.obtenir(formatPerDefecte(format));
 
     return tasca.exportarImatge(idImg, formatCaixa);

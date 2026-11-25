@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import edu.ub.ds2627.anotub.controlador.Controlador;
 import edu.ub.ds2627.anotub.controlador.MessagesCAT;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -98,5 +99,11 @@ public class CompletarTascaStepDefs {
         List.of(DadesDeProva.EXPERTESA_GENERICA));
     tascaActual = idTasca;
     state.setUsuariActual(nomUsuari);
+  }
+
+  @Then("el sistema marca la dada {string} com anotada i completada")
+  public void elSistemaMarcaLaDadaComAnotadaICompletada(String titolDada) {
+    assertEquals(MessagesCAT.DadaAnotadaTascaCompletada.getMessage(), state.getResultat());
+    assertTrue(controlador().estaDadaAnotada(tascaActual, titolDada));
   }
 }
