@@ -44,7 +44,7 @@ Feature: US31 - Triar el format pel nom
 
   Scenario: L'empresa consulta els formats disponibles
     When l'empresa consulta els formats disponibles
-    Then el sistema mostra un missatge "COCO, TF, VOC, YOLO"
+    Then el sistema mostra un missatge "YOLO, TF, VOC, COCO"
 
   Scenario: Un format que no existeix és un error comprensible
     When l'empresa exporta la imatge "i1" de la tasca "t-sabana" en format "YOLOv8"

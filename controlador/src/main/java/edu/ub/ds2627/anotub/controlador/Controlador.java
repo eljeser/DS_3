@@ -375,4 +375,10 @@ public class Controlador {
 
     return text.toString();
   }
+
+  // US31 Mètodes:
+  public List<String> obtenirFormatsDisponibles() {
+    return anotUB.obtenirFormatsDisponibles();
+  }
 }
+

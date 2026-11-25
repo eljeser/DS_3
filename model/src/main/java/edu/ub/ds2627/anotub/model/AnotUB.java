@@ -16,7 +16,8 @@ public class AnotUB {
   private final CatalegTasques tasques;
   private final CatalegAssignacions assignacions;
   private final CalculQuotaEmpresa calculQuotaEmpresa;
-  private final CercadorFormats formats;
+  // private final CercadorFormats formats;
+  private final FormatCaixaFactory formats;
 
   public AnotUB() {
     this(MARGE_BENEFICI_PER_DEFECTE);
@@ -30,10 +31,14 @@ public class AnotUB {
     this.tasques = new CatalegTasques();
     this.assignacions = new CatalegAssignacions();
     this.calculQuotaEmpresa = new CalculQuotaEmpresa();
-    this.formats = new CercadorFormats();
+
+    // this.formats = new CercadorFormats();
+    this.formats = new FormatCaixaFactory();
     formats.registrar(new FormatCOCO());
     formats.registrar(new FormatYOLO());
     formats.registrar(new FormatVOC());
+    formats.registrar(new FormatTF());
+
   }
 
   public double getMargeBenefici() {
@@ -349,14 +354,27 @@ public class AnotUB {
     Tasca tasca = tasques.obtenir(idTasca);
     List<String> resultat = new ArrayList<>();
 
-    FormatCaixa formatCaixa = formats.obtenir(format);
+    //FormatCaixa formatCaixa = formats.obtenir(format);
+
+    // Modificació per a que si el format és null o buit, es triï el format per defecte (COCO)
+    FormatCaixa formatCaixa = formats.obtenir(formatPerDefecte(format));
 
     return tasca.exportarImatge(idImg, formatCaixa);
   }
 
   // Mètode pels decimals
   public int decimalsFormat(String nomFormat) throws FormatDesconegutException {
-    return formats.obtenir(nomFormat).decimals();
+    //return formats.obtenir(nomFormat).decimals();
+    return formats.obtenir(formatPerDefecte(nomFormat)).decimals();
+  }
+
+  // US31
+  private String formatPerDefecte(String format) {
+    return (format == null || format.isBlank()) ? "COCO" : format;
+  }
+
+  public List<String> obtenirFormatsDisponibles() {
+      return new ArrayList<>(formats.obtenirFormats().keySet());
   }
 
 }

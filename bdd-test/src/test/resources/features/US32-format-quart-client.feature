@@ -25,4 +25,3 @@ Feature: US32 - Afegir el format del quart client
       arbre baobab [0.261538, 0.127500, 0.669231, 0.407500]
       elefant [0.628846, 0.563750, 0.917308, 0.861250]
       """
-
